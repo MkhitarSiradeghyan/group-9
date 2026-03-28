@@ -1,0 +1,39 @@
+@use "../../styles/_variables" as *
+.main
+    padding: 100px 0
+    .wrap
+        aspect-ratio: 5 / 3
+        display: grid
+        grid-template-columns: 3fr 2fr 3fr
+        gap: 48px
+        .item
+            padding: 24px
+            border-radius: $radius-4
+            box-shadow: 0 24px 24px $color-neutral-7
+            transition: $transition
+            cursor: pointer
+            font-size: 120px
+            font-weight: 100
+            overflow: hidden
+            position: relative
+            filter: grayscale(100%)
+            transition: $transition
+            &:first-of-type, &:last-of-type
+                grid-column: span 2
+            &:hover
+                box-shadow: none
+                transition: $transition
+            &:hover >  img
+                filter: grayscale(0)
+                scale: 1.1
+            .title
+                position: relative
+                z-index: 9
+                color: rgba($color-white, 0.8 )
+
+            img
+                transition: $transition
+                +img_cover
+                +pos_center
+                &:last-of-type
+                    z-index: 99
