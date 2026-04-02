@@ -1,8 +1,7 @@
 @use "../../styles/_variables" as *
 .main
     height: 100vh
-    background: #0008 no-repeat center center / cover
-    background-blend-mode: darken
+    background:  no-repeat center center / cover
     .wrap
         display: flex
         flex-direction: column
@@ -17,3 +16,7 @@
             color: $color-white
             border-radius: $radius-2
             backdrop-filter: blur(10px)
+            transition: $fast
+            &:hover
+                transition: $fast
+                background: rgba($color-white , 0.7)
