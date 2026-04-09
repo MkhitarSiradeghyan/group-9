@@ -1,7 +1,7 @@
 import React from "react";
-import s from "./AlcoTypeCard.module.sass";
+import s from "./AlcoholCard.module.sass";
 
-const AlcoTypeCard = () => {
+const AlcoholCard = () => {
   return (
     <div className={s.card}>
       <div className={s.card_img}>
@@ -15,4 +15,4 @@ const AlcoTypeCard = () => {
   );
 };
 
-export default AlcoTypeCard;
+export default AlcoholCard;

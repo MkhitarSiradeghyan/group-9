@@ -1,16 +1,16 @@
 import React from "react";
 import Home from "./pages/Home/Home";
 import { BrowserRouter, Route, Routes } from "react-router";
-import AlcoholPage from "./pages/AlcoholPage/AlcoholPage";
-import AlcoTypePage from "./pages/AlcoTypePage/AlcoTypePage";
+import CategoryPage from "./pages/CategoryPage/CategoryPage";
+import DrinkPage from "./pages/DrinkPage/DrinkPage";
 
 const App = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/alcohol" element={<AlcoholPage />} />
-        <Route path="/alcohol/:id" element={<AlcoTypePage />} />
+        <Route path="/category" element={<CategoryPage />} />
+        <Route path="/category/:id" element={<DrinkPage />} />
       </Routes>
     </BrowserRouter>
   );

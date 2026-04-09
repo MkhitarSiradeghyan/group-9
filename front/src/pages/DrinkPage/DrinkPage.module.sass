@@ -11,12 +11,7 @@
             position: absolute
             img
                 +img_cover
-                &:nth-child(2)
-                    position: absolute
-                    +img_cover
-                    top: 0
-                    left: 0
-                    z-index: 99
+               
         .hero_wrap
             width: 100%
             position: absolute
@@ -57,7 +52,7 @@
                     +img_contain
 @keyframes block
     0%
-        left: 100%
+        left: -100%
         opacity: 0
     100%
         left: 0
