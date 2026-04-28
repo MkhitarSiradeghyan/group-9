@@ -15,7 +15,7 @@ def register_user(request):
     email = request.data.get("email", "test@gmail.com")
     if not username or not password:
         return Response({"error": "Username and password required"}, status=status.HTTP_400_BAD_REQUEST)
-    if User.objects.filter(username=username).exist():
+    if User.objects.filter(username=username).exists():
         return Response({"error": "User already exists", status: status.HTTP_400_BAD_REQUEST})
     user = User.objects.create_user(username=username, password=password, email=email)
     refresh = RefreshToken.for_user(user)

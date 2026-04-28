@@ -48,6 +48,22 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -113,14 +129,6 @@
         "documentation": {}
     },
     {
-        "label": "CORS_ALLOWED_ORIGINS",
-        "importPath": "main.settings",
-        "description": "main.settings",
-        "isExtraImport": true,
-        "detail": "main.settings",
-        "documentation": {}
-    },
-    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -150,6 +158,57 @@
         "description": "django.core.wsgi",
         "isExtraImport": true,
         "detail": "django.core.wsgi",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.models",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "AbstractUser",
+        "importPath": "django.contrib.auth.models",
+        "description": "django.contrib.auth.models",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth.models",
+        "documentation": {}
+    },
+    {
+        "label": "django.contrib.auth.validators",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.contrib.auth.validators",
+        "description": "django.contrib.auth.validators",
+        "detail": "django.contrib.auth.validators",
+        "documentation": {}
+    },
+    {
+        "label": "django.utils.timezone",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "django.utils.timezone",
+        "description": "django.utils.timezone",
+        "detail": "django.utils.timezone",
+        "documentation": {}
+    },
+    {
+        "label": "serializers",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "status",
+        "importPath": "rest_framework",
+        "description": "rest_framework",
+        "isExtraImport": true,
+        "detail": "rest_framework",
         "documentation": {}
     },
     {
@@ -190,14 +249,6 @@
         "description": "rest_framework.response",
         "isExtraImport": true,
         "detail": "rest_framework.response",
-        "documentation": {}
-    },
-    {
-        "label": "status",
-        "importPath": "rest_framework",
-        "description": "rest_framework",
-        "isExtraImport": true,
-        "detail": "rest_framework",
         "documentation": {}
     },
     {
@@ -311,7 +362,7 @@
         "kind": 5,
         "importPath": "main.settings",
         "description": "main.settings",
-        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),\n    'REFRESH_LIFETIME': timedelta(days=1),\n}\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': ( \n        'rest_framework.authentication.JWTAuthentication',\n    ),\n}\nROOT_URLCONF = 'main.urls'",
+        "peekOfCode": "SIMPLE_JWT = {\n    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),\n    'REFRESH_LIFETIME': timedelta(days=1),\n}\nREST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': ( \n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n}\nAUTH_USER_MODEL = 'users.User'",
         "detail": "main.settings",
         "documentation": {}
     },
@@ -320,7 +371,16 @@
         "kind": 5,
         "importPath": "main.settings",
         "description": "main.settings",
-        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': ( \n        'rest_framework.authentication.JWTAuthentication',\n    ),\n}\nROOT_URLCONF = 'main.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],",
+        "peekOfCode": "REST_FRAMEWORK = {\n    'DEFAULT_AUTHENTICATION_CLASSES': ( \n        'rest_framework_simplejwt.authentication.JWTAuthentication',\n    ),\n}\nAUTH_USER_MODEL = 'users.User'\nROOT_URLCONF = 'main.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',",
+        "detail": "main.settings",
+        "documentation": {}
+    },
+    {
+        "label": "AUTH_USER_MODEL",
+        "kind": 5,
+        "importPath": "main.settings",
+        "description": "main.settings",
+        "peekOfCode": "AUTH_USER_MODEL = 'users.User'\nROOT_URLCONF = 'main.urls'\nTEMPLATES = [\n    {\n        'BACKEND': 'django.template.backends.django.DjangoTemplates',\n        'DIRS': [],\n        'APP_DIRS': True,\n        'OPTIONS': {\n            'context_processors': [\n                'django.template.context_processors.request',",
         "detail": "main.settings",
         "documentation": {}
     },
@@ -433,6 +493,15 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "users.migrations.0001_initial",
+        "description": "users.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n        ('auth', '0012_alter_user_first_name_max_length'),\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='User',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),",
+        "detail": "users.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
         "label": "AuthConfig",
         "kind": 6,
         "importPath": "users.apps",
@@ -446,8 +515,17 @@
         "kind": 6,
         "importPath": "users.models",
         "description": "users.models",
-        "peekOfCode": "class User(models.Model):\n    email = models.EmailField(unique=True)\n    def __str__(self):\n        return self.username",
+        "peekOfCode": "class User(AbstractUser):\n    email = models.EmailField(unique=True)\n    def __str__(self):\n        return self.username",
         "detail": "users.models",
+        "documentation": {}
+    },
+    {
+        "label": "UserSerializer",
+        "kind": 6,
+        "importPath": "users.serializers",
+        "description": "users.serializers",
+        "peekOfCode": "class UserSerializer(serializers.ModelSerializer):\n    password = serializers.CharField(write_only=True, min_length=8)\n    class Meta:\n        model = User\n        fields = ['id', 'username', 'email', 'password']\n    def create(self, validated_data):\n        return User.objects.create_user(**validated_data)",
+        "detail": "users.serializers",
         "documentation": {}
     },
     {
@@ -464,7 +542,7 @@
         "kind": 2,
         "importPath": "users.views",
         "description": "users.views",
-        "peekOfCode": "def register_user(request):\n    username = request.data.get(\"username\")\n    password = request.data.get(\"password\")\n    email = request.data.get(\"email\", \"test@gmail.com\")\n    if not username or not password:\n        return Response({\"error\": \"Username and password required\"}, status=status.HTTP_400_BAD_REQUEST)\n    if User.objects.filter(username=username).exist():\n        return Response({\"error\": \"User already exists\", status: status.HTTP_400_BAD_REQUEST})\n    user = User.objects.create_user(username=username, password=password, email=email)\n    refresh = RefreshToken.for_user(user)",
+        "peekOfCode": "def register_user(request):\n    username = request.data.get(\"username\")\n    password = request.data.get(\"password\")\n    email = request.data.get(\"email\", \"test@gmail.com\")\n    if not username or not password:\n        return Response({\"error\": \"Username and password required\"}, status=status.HTTP_400_BAD_REQUEST)\n    if User.objects.filter(username=username).exists():\n        return Response({\"error\": \"User already exists\", status: status.HTTP_400_BAD_REQUEST})\n    user = User.objects.create_user(username=username, password=password, email=email)\n    refresh = RefreshToken.for_user(user)",
         "detail": "users.views",
         "documentation": {}
     },

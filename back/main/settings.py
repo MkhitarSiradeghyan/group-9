@@ -1,6 +1,5 @@
 from datetime import timedelta
 from pathlib import Path
-from main.settings import CORS_ALLOWED_ORIGINS
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -48,9 +47,11 @@ SIMPLE_JWT = {
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': ( 
-        'rest_framework.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
+
+AUTH_USER_MODEL = 'users.User'
 
 ROOT_URLCONF = 'main.urls'
 
