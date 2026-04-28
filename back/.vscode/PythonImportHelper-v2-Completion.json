@@ -24,14 +24,6 @@
         "documentation": {}
     },
     {
-        "label": "admin",
-        "importPath": "django.contrib",
-        "description": "django.contrib",
-        "isExtraImport": true,
-        "detail": "django.contrib",
-        "documentation": {}
-    },
-    {
         "label": "AppConfig",
         "importPath": "django.apps",
         "description": "django.apps",
@@ -121,6 +113,14 @@
         "documentation": {}
     },
     {
+        "label": "CORS_ALLOWED_ORIGINS",
+        "importPath": "main.settings",
+        "description": "main.settings",
+        "isExtraImport": true,
+        "detail": "main.settings",
+        "documentation": {}
+    },
+    {
         "label": "path",
         "importPath": "django.urls",
         "description": "django.urls",
@@ -177,6 +177,14 @@
         "documentation": {}
     },
     {
+        "label": "IsAuthenticated",
+        "importPath": "rest_framework.permissions",
+        "description": "rest_framework.permissions",
+        "isExtraImport": true,
+        "detail": "rest_framework.permissions",
+        "documentation": {}
+    },
+    {
         "label": "Response",
         "importPath": "rest_framework.response",
         "description": "rest_framework.response",
@@ -190,6 +198,22 @@
         "description": "rest_framework",
         "isExtraImport": true,
         "detail": "rest_framework",
+        "documentation": {}
+    },
+    {
+        "label": "RefreshToken",
+        "importPath": "rest_framework_simplejwt.tokens",
+        "description": "rest_framework_simplejwt.tokens",
+        "isExtraImport": true,
+        "detail": "rest_framework_simplejwt.tokens",
+        "documentation": {}
+    },
+    {
+        "label": "authenticate",
+        "importPath": "django.contrib.auth",
+        "description": "django.contrib.auth",
+        "isExtraImport": true,
+        "detail": "django.contrib.auth",
         "documentation": {}
     },
     {
@@ -265,11 +289,20 @@
         "documentation": {}
     },
     {
+        "label": "CORS_ALLOWED_ORIGINS",
+        "kind": 5,
+        "importPath": "main.settings",
+        "description": "main.settings",
+        "peekOfCode": "CORS_ALLOWED_ORIGINS = [\n    \"http://127.0.0.1:5173\",\n    \"http://localhost:5173\",\n]\nMIDDLEWARE = [\n    'corsheaders.middleware.CorsMiddleware',\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',",
+        "detail": "main.settings",
+        "documentation": {}
+    },
+    {
         "label": "MIDDLEWARE",
         "kind": 5,
         "importPath": "main.settings",
         "description": "main.settings",
-        "peekOfCode": "MIDDLEWARE = [\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]\nSIMPLE_JWT = {",
+        "peekOfCode": "MIDDLEWARE = [\n    'corsheaders.middleware.CorsMiddleware',\n    'django.middleware.security.SecurityMiddleware',\n    'django.contrib.sessions.middleware.SessionMiddleware',\n    'django.middleware.common.CommonMiddleware',\n    'django.middleware.csrf.CsrfViewMiddleware',\n    'django.contrib.auth.middleware.AuthenticationMiddleware',\n    'django.contrib.messages.middleware.MessageMiddleware',\n    'django.middleware.clickjacking.XFrameOptionsMiddleware',\n]",
         "detail": "main.settings",
         "documentation": {}
     },
@@ -409,11 +442,20 @@
         "documentation": {}
     },
     {
+        "label": "User",
+        "kind": 6,
+        "importPath": "users.models",
+        "description": "users.models",
+        "peekOfCode": "class User(models.Model):\n    email = models.EmailField(unique=True)\n    def __str__(self):\n        return self.username",
+        "detail": "users.models",
+        "documentation": {}
+    },
+    {
         "label": "urlpatterns",
         "kind": 5,
         "importPath": "users.urls",
         "description": "users.urls",
-        "peekOfCode": "urlpatterns = [\n    path('login', login),\n]",
+        "peekOfCode": "urlpatterns = [\n    path('login/', login_user),\n    path('register/', register_user),\n]",
         "detail": "users.urls",
         "documentation": {}
     },
@@ -422,7 +464,25 @@
         "kind": 2,
         "importPath": "users.views",
         "description": "users.views",
-        "peekOfCode": "def register_user(request):\n    username = request.data.get(\"username\")\n    password = request.data.get(\"password\")\n    email = request.data.get(\"email\", \"\")\n    if not username or not password:\n        return Response({\"error\": \"Username and password required\"}, status=status.HTTP_400_BAD_REQUEST)",
+        "peekOfCode": "def register_user(request):\n    username = request.data.get(\"username\")\n    password = request.data.get(\"password\")\n    email = request.data.get(\"email\", \"test@gmail.com\")\n    if not username or not password:\n        return Response({\"error\": \"Username and password required\"}, status=status.HTTP_400_BAD_REQUEST)\n    if User.objects.filter(username=username).exist():\n        return Response({\"error\": \"User already exists\", status: status.HTTP_400_BAD_REQUEST})\n    user = User.objects.create_user(username=username, password=password, email=email)\n    refresh = RefreshToken.for_user(user)",
+        "detail": "users.views",
+        "documentation": {}
+    },
+    {
+        "label": "login_user",
+        "kind": 2,
+        "importPath": "users.views",
+        "description": "users.views",
+        "peekOfCode": "def login_user(request):\n    username = request.data.get('username')\n    password = request.data.get('password')\n    user = authenticate(username=username, password=password)\n    if user is not None:\n        refresh = RefreshToken.for_user(user)\n        return Response({\n            'refresh': str(refresh),\n            'access': str(refresh.access_token),\n            'username': user.username",
+        "detail": "users.views",
+        "documentation": {}
+    },
+    {
+        "label": "update_profile",
+        "kind": 2,
+        "importPath": "users.views",
+        "description": "users.views",
+        "peekOfCode": "def update_profile(request):\n    user = request.user\n    user.first_name = request.data.get('first_name', user.first_name)\n    user.last_name = request.data.get('last_name', user.last_name)\n    user.email = request.data.get('email', user.email)\n    new_password = request.data.get('password')\n    if new_password:\n        user.set_password(new_password)\n    user.save()\n    return Response({'message': 'Profile is up-to-date'})",
         "detail": "users.views",
         "documentation": {}
     },
